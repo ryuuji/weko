@@ -88,3 +88,5 @@ celeryd.pid
 # demo data
 weko-demodata/
 
+/*.crt
+/*.key
