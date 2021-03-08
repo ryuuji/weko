@@ -1,0 +1,84 @@
+[tool.poetry]
+name = "weko"
+version = "0.1.0"
+description = ""
+authors = ["Ryuuji Yoshimoto <ryuuji@calil.jp>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+invenio-access = "*"
+invenio-accounts = "*"
+invenio-admin = "*"
+invenio-app = "*"
+invenio-assets = "*"
+invenio-base = "*"
+invenio-cache = "*"
+invenio-celery = "*"
+invenio-config = "*"
+invenio-formatter = "*"
+invenio-i18n = "*"
+invenio-indexer = "*"
+invenio-jsonschemas = "*"
+invenio-logging = "*"
+invenio-marc21 = "== 1.0.0a9"
+invenio-oauthclient = "*"
+invenio-pidrelations = "== 1.0.0a7"
+invenio-pidstore = "*"
+invenio-query-parser = "*"
+invenio-records-files = "*"
+invenio-records-ui = "*"
+invenio-rest = "*"
+invenio-search = {path = "./modules/invenio-search", develop = true}
+invenio-theme = "*"
+invenio-search-ui = {path = "./modules/invenio-search-ui", develop = true}
+invenio-csl-rest = "== 1.0.0a1"
+invenio-files-rest = "*"
+invenio-s3 = "*"
+invenio-previewer = {path = "./modules/invenio-previewer", develop = true}
+invenio-queues = "== v1.0.0a3"
+invenio-db = "*"
+netaddr = "^0.8.0"
+invenio-mail = "^1.0.2"
+SQLAlchemy-Continuum = "^1.3.11"
+invenio-oauth2server = "^1.3.2"
+invenio-oaiharvester = {path = "./modules/invenio-oaiharvester", develop = true}
+invenio-oaiserver = {path = "./modules/invenio-oaiserver", develop = true}
+invenio-stats = {path = "./modules/invenio-stats", develop = true}
+invenio-communities =  {path = "./modules/invenio-communities", develop = true}
+invenio-deposit = {path = "./modules/invenio-deposit", develop = true}
+weko-theme = {path = "./modules/weko-theme", develop = true}
+weko-itemtypes-ui = {path = "./modules/weko-itemtypes-ui", develop = true}
+weko-items-ui = {path = "./modules/weko-items-ui", develop = true}
+weko-accounts = {path = "./modules/weko-accounts", develop = true}
+weko-admin = {path = "./modules/weko-admin", develop = true}
+weko-logging = {path = "./modules/weko-logging", develop = true}
+weko-gridlayout = {path = "./modules/weko-gridlayout", develop = true}
+weko-groups = {path = "./modules/weko-groups", develop = true}
+weko-search-ui = {path = "./modules/weko-search-ui", develop = true}
+weko-records = {path = "./modules/weko-records", develop = true}
+weko-records-ui = {path = "modules/weko-records-ui", develop = true}
+weko-schema-ui = {path = "./modules/weko-schema-ui", develop = true}
+weko-index-tree = {path = "./modules/weko-index-tree", develop = true}
+weko-user-profiles = {path = "./modules/weko-user-profiles", develop = true}
+weko-deposit = {path = "./modules/weko-deposit", develop = true}
+weko-authors = {path = "./modules/weko-authors", develop = true}
+weko-workflow = {path = "./modules/weko-workflow", develop = true}
+weko-indextree-journal = {path = "./modules/weko-indextree-journal", develop = true}
+weko-bulkupdate = {path = "./modules/weko-bulkupdate", develop = true}
+weko-items-autofill = {path = "./modules/weko-items-autofill", develop = true}
+weko-sitemap = {path = "./modules/weko-sitemap", develop = true}
+citeproc-py = {path = "./modules/citeproc-py", develop = true}
+dictdiffer = "^0.8.1"
+numpy = "^1.20.1"
+xmltodict = "^0.12.0"
+Flask-Sitemap = "^0.3.0"
+fpdf = "^1.7.2"
+jinja2-cli = "^0.7.0"
+nbconvert = {extras = ["execute"], version = "== 5.6.1"}
+Flask-Assets = "^2.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
