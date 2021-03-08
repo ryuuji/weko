@@ -23,10 +23,10 @@
 
 WEKO3のテスト用リポジトリ。
 
-[ ] Python3.9へのアップデート
-[ ] Kubernetesデプロイに対応
-[ ] Windows環境で動作するようにする
-[ ] 依存関係の再確認
+- [ ] Python3.9へのアップデート
+- [ ] Kubernetesデプロイに対応
+- [ ] Windows環境で動作するようにする
+- [ ] 依存関係の再確認
 
 
 .. image:: https://travis-ci.org/RCOSDP/weko.svg?branch=master
