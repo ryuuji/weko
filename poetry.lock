@@ -278,19 +278,14 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "citeproc-py"
-version = "0.5.1-9-g27099f7-dirty"
+version = "0.5.1"
 description = "Citations and bibliography formatter"
 category = "main"
 optional = false
 python-versions = "*"
-develop = true
 
 [package.dependencies]
 lxml = "*"
-
-[package.source]
-type = "directory"
-url = "modules/citeproc-py"
 
 [[package]]
 name = "citeproc-py-styles"
@@ -977,8 +972,8 @@ invenio-i18n = ">=1.2.0"
 [package.extras]
 all = ["Sphinx (>=3)", "cachelib (>=0.1)", "pytest-invenio (>=1.4.1)", "redis (>=2.10.5)"]
 docs = ["Sphinx (>=3)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.8)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.8)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.8)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.8)"]
 sqlite = ["invenio-db[sqlite,versioning] (>=1.0.8)"]
 tests = ["cachelib (>=0.1)", "pytest-invenio (>=1.4.1)", "redis (>=2.10.5)"]
 
@@ -1017,8 +1012,8 @@ ua-parser = ">=0.7.3"
 admin = ["invenio-admin (>=1.2.1)"]
 all = ["invenio-admin (>=1.2.1)", "Sphinx (>=3)", "pytest-invenio (>=1.4.0)"]
 docs = ["Sphinx (>=3)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.8)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.8)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.8)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.8)"]
 sqlite = ["invenio-db[versioning] (>=1.0.8)"]
 tests = ["pytest-invenio (>=1.4.0)"]
 
@@ -1538,8 +1533,8 @@ WTForms-Alchemy = ">=0.15.0"
 admin = ["invenio-admin (>=1.2.1)"]
 all = ["invenio-admin (>=1.2.1)", "Sphinx (>=2,<3)", "redis (>=2.10.5)", "pytest-invenio (>=1.4.0)"]
 docs = ["Sphinx (>=2,<3)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.8)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.8)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.8)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.8)"]
 redis = ["redis (>=2.10.5)"]
 sqlite = ["invenio-db[versioning] (>=1.0.8)"]
 tests = ["pytest-invenio (>=1.4.0)"]
@@ -1595,8 +1590,8 @@ docs = ["Sphinx (>=1.5.1)"]
 elasticsearch6 = ["invenio-search[elasticsearch6] (>=1.3.1,<1.4.0)"]
 elasticsearch7 = ["invenio-search[elasticsearch7] (>=1.3.1,<1.4.0)"]
 indexer = ["invenio-indexer (>=1.1.2)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.4,<2.0.0)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.4,<2.0.0)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.4,<2.0.0)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.4,<2.0.0)"]
 records = ["invenio-records (>=1.3.2)", "invenio-records-ui (>=1.1.0)"]
 sqlite = ["invenio-db[versioning] (>=1.0.4,<2.0.0)"]
 tests = ["pytest-invenio (>=1.3.2,<2.0.0)"]
@@ -1713,8 +1708,8 @@ jsonschema = ">=3.0.0"
 admin = ["invenio-admin (>=1.2.1)"]
 all = ["Sphinx (>=2.4)", "invenio-admin (>=1.2.1)", "pytest-invenio (>=1.4.1)"]
 docs = ["Sphinx (>=2.4)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.5)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.5)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.5)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.5)"]
 sqlite = ["invenio-db[versioning] (>=1.0.5)"]
 tests = ["pytest-invenio (>=1.4.1)"]
 
@@ -1735,8 +1730,8 @@ invenio-records-rest = ">=1.6.3"
 [package.extras]
 all = ["Sphinx (>=1.5.1)", "check-manifest (>=0.25)", "coverage (>=4.0)", "invenio-indexer (>=1.1.0)", "invenio-search[elasticsearch6] (>=1.2.0)", "isort (>=4.3.4)", "mock (>=1.3.0)", "pydocstyle (>=1.0.0)", "pytest-cov (>=1.8.0)", "pytest-pep8 (>=1.0.6)", "pytest (>=3.7.0)"]
 docs = ["Sphinx (>=1.5.1)"]
-mysql = ["invenio-db[versioning,mysql] (>=1.0.0)"]
-postgresql = ["invenio-db[versioning,postgresql] (>=1.0.0)"]
+mysql = ["invenio-db[mysql,versioning] (>=1.0.0)"]
+postgresql = ["invenio-db[postgresql,versioning] (>=1.0.0)"]
 sqlite = ["invenio-db[versioning] (>=1.0.0)"]
 tests = ["check-manifest (>=0.25)", "coverage (>=4.0)", "invenio-indexer (>=1.1.0)", "invenio-search[elasticsearch6] (>=1.2.0)", "isort (>=4.3.4)", "mock (>=1.3.0)", "pydocstyle (>=1.0.0)", "pytest-cov (>=1.8.0)", "pytest-pep8 (>=1.0.6)", "pytest (>=3.7.0)"]
 
@@ -1785,9 +1780,9 @@ invenio-pidstore = ">=1.2.0"
 invenio-records = ">=1.0.0"
 
 [package.extras]
-all = ["Sphinx (>=1.5.1)", "invenio-access (>=1.0.0)", "invenio-accounts (>=1.3.0)", "invenio-db[versioning,postgresql,mysql] (>=1.0.0)", "pytest-invenio (>=1.4.0)"]
+all = ["Sphinx (>=1.5.1)", "invenio-access (>=1.0.0)", "invenio-accounts (>=1.3.0)", "invenio-db[mysql,postgresql,versioning] (>=1.0.0)", "pytest-invenio (>=1.4.0)"]
 docs = ["Sphinx (>=1.5.1)"]
-tests = ["invenio-access (>=1.0.0)", "invenio-accounts (>=1.3.0)", "invenio-db[versioning,postgresql,mysql] (>=1.0.0)", "pytest-invenio (>=1.4.0)"]
+tests = ["invenio-access (>=1.0.0)", "invenio-accounts (>=1.3.0)", "invenio-db[mysql,postgresql,versioning] (>=1.0.0)", "pytest-invenio (>=1.4.0)"]
 
 [[package]]
 name = "invenio-rest"
@@ -3532,7 +3527,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "04d932dd66083cb9bb24d13da711493f1ea225cc6e30ac85b2a23f912bc96db7"
+content-hash = "fa8fd88314db1af289ea39e6620a4239816f047eb8643698f437557fe3a9acea"
 
 [metadata.files]
 alembic = [
@@ -3682,7 +3677,10 @@ chardet = [
     {file = "chardet-4.0.0-py2.py3-none-any.whl", hash = "sha256:f864054d66fd9118f2e67044ac8981a54775ec5b67aed0441892edb553d21da5"},
     {file = "chardet-4.0.0.tar.gz", hash = "sha256:0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa"},
 ]
-citeproc-py = []
+citeproc-py = [
+    {file = "citeproc-py-0.5.1.tar.gz", hash = "sha256:c8a4f22442f2ea57bd88342bb51253f9bff0511109ff3695059278098a734a01"},
+    {file = "citeproc_py-0.5.1-py2.py3-none-any.whl", hash = "sha256:388985d08fc47eadb6406e3e1b53576cb08b52aca86e5b41e3a95f6349d17094"},
+]
 citeproc-py-styles = [
     {file = "citeproc-py-styles-0.1.2.tar.gz", hash = "sha256:41107b2831f5490a13a95e8e2583101e0485968b2f6affb42d84e4e7e272dcf7"},
     {file = "citeproc_py_styles-0.1.2-py2.py3-none-any.whl", hash = "sha256:6c94a83b2d785345eff5471eafe4bcf794ee7fd5ba2921a9813b0814dfb62bf7"},
