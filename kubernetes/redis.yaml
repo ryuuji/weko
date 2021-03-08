@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis
+spec:
+  serviceName: "redis"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:6.2.1-alpine
+        ports:
+        - containerPort: 6379
+          protocol: TCP
+          name: redis
+        livenessProbe:
+          tcpSocket:
+            port: 6379
+          failureThreshold: 5
+          periodSeconds: 5
+          initialDelaySeconds: 10
+        command: ["redis-server"]
+        args: ["--maxmemory","300m"]
+        resources:
+          limits:
+            memory: "380Mi"
+            cpu: 100m
+          requests:
+            memory: "300Mi"
+            cpu: 20m
