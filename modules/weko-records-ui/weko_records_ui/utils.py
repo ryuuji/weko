@@ -27,7 +27,7 @@ from flask import current_app, request
 from flask_babelex import gettext as _
 from flask_login import current_user
 from invenio_db import db
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidstore.models import PersistentIdentifier, PIDStatus
 from invenio_records.models import RecordMetadata
 from weko_admin.models import AdminSettings
@@ -186,7 +186,7 @@ def soft_delete(recid):
                          'the import is in progress.')
             })
 
-        versioning = PIDVersioning(child=pid)
+        versioning = PIDNodeVersioning(child=pid)
         if not versioning.exists:
             return
         all_ver = versioning.children.all()
@@ -230,7 +230,7 @@ def restore(recid):
         if pid.status != PIDStatus.DELETED:
             return
 
-        versioning = PIDVersioning(child=pid)
+        versioning = PIDNodeVersioning(child=pid)
         if not versioning.exists:
             return
         all_ver = versioning.children.all()

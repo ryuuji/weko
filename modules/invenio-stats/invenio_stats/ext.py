@@ -189,7 +189,7 @@ class _InvenioStatsState(object):
     def publish(self, event_type, events):
         """Publish events."""
         assert event_type in self.events
-        current_queues.queues['stats-{}'.format(event_type)].publish(events)
+        # current_queues.queues['stats-{}'.format(event_type)].publish(events)
 
     def consume(self, event_type, no_ack=True, payload=True):
         """Comsume all pending events."""

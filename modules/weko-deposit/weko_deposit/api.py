@@ -41,8 +41,8 @@ from invenio_files_rest.models import Bucket, MultipartObject, ObjectVersion, \
     Part
 from invenio_i18n.ext import current_i18n
 from invenio_indexer.api import RecordIndexer
-from invenio_pidrelations.contrib.records import RecordDraft
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.draft import PIDNodeDraft
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidrelations.models import PIDRelation
 from invenio_pidrelations.serializers.utils import serialize_relations
 from invenio_pidstore.errors import PIDDoesNotExistError, PIDInvalidAction
@@ -606,8 +606,9 @@ class WekoDeposit(Deposit):
 
         recid = PersistentIdentifier.get('recid', record_id)
         depid = PersistentIdentifier.get('depid', record_id)
-        PIDVersioning(parent=parent_pid).insert_draft_child(child=recid)
-        RecordDraft.link(recid, depid)
+        PIDNodeVersioning(parent=parent_pid).insert_draft_child(child=recid)
+
+        #RecordDraft.link(recid, depid)
 
         return deposit
 
@@ -748,7 +749,7 @@ class WekoDeposit(Deposit):
 
             # Check that there is not a newer draft version for this record
             # and this is the latest version
-            versioning = PIDVersioning(child=pid)
+            versioning = PIDNodeVersioning(child=pid)
             record = WekoDeposit.get_record(pid.object_uuid)
 
             assert PIDStatus.REGISTERED == pid.status
@@ -782,15 +783,15 @@ class WekoDeposit(Deposit):
             depid = PersistentIdentifier.get(
                 'depid', str(data['_deposit']['id']))
 
-            PIDVersioning(
+            PIDNodeVersioning(
                 parent=versioning.parent).insert_draft_child(
                 child=recid)
-            RecordDraft.link(recid, depid)
+            #RecordDraft.link(recid, depid)
 
             if is_draft:
                 with db.session.begin_nested():
                     # Set relation type of draft record is 3: Draft
-                    parent_pid = PIDVersioning(child=recid).parent
+                    parent_pid = PIDNodeVersioning(child=recid).parent
                     relation = PIDRelation.query. \
                         filter_by(parent=parent_pid,
                                   child=recid).one_or_none()
@@ -1532,7 +1533,7 @@ class WekoRecord(Record):
     @property
     def pid_parent(self):
         """Return pid_value of doi identifier."""
-        pid_ver = PIDVersioning(child=self.pid_recid)
+        pid_ver = PIDNodeVersioning(child=self.pid_recid)
         if pid_ver:
             # Get pid parent of draft record
             if ".0" in self.pid_recid.pid_value:

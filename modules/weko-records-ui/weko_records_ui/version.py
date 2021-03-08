@@ -24,4 +24,4 @@ This file is imported by ``weko_records_ui.__init__``,
 and parsed by ``setup.py``.
 """
 
-__version__ = '0.1.0.dev20170000'
+__version__ = '0.1.0.dev20210000'

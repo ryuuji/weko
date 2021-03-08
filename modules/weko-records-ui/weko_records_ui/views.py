@@ -32,10 +32,9 @@ from flask_login import login_required
 from flask_security import current_user
 from invenio_db import db
 from invenio_files_rest.models import ObjectVersion
-from invenio_files_rest.permissions import has_update_version_role
 from invenio_i18n.ext import current_i18n
 from invenio_oaiserver.response import getrecord
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidstore.errors import PIDDoesNotExistError
 from invenio_pidstore.models import PersistentIdentifier, PIDStatus
 from invenio_records_ui.signals import record_viewed
@@ -76,6 +75,23 @@ blueprint = Blueprint(
     static_folder='static',
 )
 
+def has_update_version_role(user):
+    """Check if user has the version update role when working on object_version.
+
+    :param user: User to check the role.
+    :return Boolean value.
+    """
+    if user is not None and user.is_authenticated:
+        roles_user = []
+        from flask import current_app
+        roles_env = current_app.config.get('FILES_REST_ROLES_ENV', [])
+        for role_env in roles_env:
+            if role_env in os.environ:
+                roles_user.append(os.environ.get(role_env))
+        for lst in list(user.roles or []):
+            if lst.name in roles_user:
+                return True
+    return False
 
 @blueprint.app_template_filter()
 def record_from_pid(pid_value):
@@ -116,7 +132,7 @@ def publish(pid, record, template=None, **kwargs):
     status = request.values.get('status')
     publish_status = record.get('publish_status')
 
-    pid_ver = PIDVersioning(child=pid)
+    pid_ver = PIDNodeVersioning(child=pid)
     last_record = WekoRecord.get_record_by_pid(pid_ver.last_child.pid_value)
 
     if not publish_status:
@@ -425,7 +441,7 @@ def default_view_method(pid, record, filename=None, template=None, **kwargs):
             if not path_name_dict['ja'][path]:
                 path_name_dict['ja'][path] = path_name_dict['en'][path]
     # Get PID version object to retrieve all versions of item
-    pid_ver = PIDVersioning(child=pid)
+    pid_ver = PIDNodeVersioning(child=pid)
     if not pid_ver.exists or pid_ver.is_last_child:
         abort(404)
     active_versions = list(pid_ver.children or [])
@@ -604,7 +620,7 @@ def doi_ish_view_method(parent_pid_value=0, version=0):
         p_pid = None
 
     if p_pid:
-        pid_ver = PIDVersioning(parent=p_pid)
+        pid_ver = PIDNodeVersioning(parent=p_pid)
         all_versions = list(
             pid_ver.get_children(
                 ordered=True,
@@ -636,7 +652,7 @@ def parent_view_method(pid_value=0):
         p_pid = None
 
     if p_pid:
-        pid_version = PIDVersioning(parent=p_pid)
+        pid_version = PIDNodeVersioning(parent=p_pid)
         if pid_version.last_child:
             return redirect(
                 url_for('invenio_records_ui.recid',

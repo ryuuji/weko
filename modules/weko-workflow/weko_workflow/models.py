@@ -466,7 +466,7 @@ class FlowDefine(db.Model, TimestampMixin):
 
     flow_user = db.Column(
         db.Integer(),
-        db.ForeignKey(User.id), nullable=True, unique=False)
+        db.ForeignKey(User.id,name='fk_flow_user_id'), nullable=True, unique=False)
     """the user who update the flow."""
 
     user_profile = db.relationship(User)
@@ -495,7 +495,7 @@ class FlowDefine(db.Model, TimestampMixin):
     flow_actions = db.relationship('FlowAction', backref=db.backref('flow'))
     """flow action relationship."""
 
-    is_deleted = db.Column(db.Boolean(), nullable=False, default=False)
+    is_deleted = db.Column(db.Boolean(name='deleted'), nullable=False, default=False)
     """flow define delete flag."""
 
 
@@ -633,7 +633,7 @@ class WorkFlow(db.Model, TimestampMixin):
         backref=db.backref('workflow', lazy='dynamic')
     )
 
-    is_deleted = db.Column(db.Boolean(), nullable=False, default=False)
+    is_deleted = db.Column(db.Boolean(name='deleted'), nullable=False, default=False)
     """workflow delete flag."""
 
 

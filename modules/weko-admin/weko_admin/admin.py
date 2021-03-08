@@ -41,8 +41,8 @@ from flask_login import current_user
 from flask_mail import Attachment
 from invenio_communities.models import Community
 from invenio_db import db
-from invenio_files_rest.storage.pyfs import remove_dir_with_file
-from invenio_mail.api import send_mail
+#from invenio_files_rest.storage.pyfs import remove_dir_with_file
+#from invenio_mail.api import send_mail
 from simplekv.memory.redisstore import RedisStore
 from weko_index_tree.models import IndexStyle
 from weko_records.api import ItemTypes, SiteLicense
@@ -60,6 +60,13 @@ from .permissions import admin_permission_factory
 from .utils import get_redis_cache, get_response_json, get_search_setting
 from .utils import get_user_report_data as get_user_report
 from .utils import package_reports, reset_redis_cache, str_to_bool
+
+def remove_dir_with_file(path):
+    """Remove the directory that contains the all files in the directory."""
+    try:
+        shutil.rmtree(path)
+    except OSError as e:
+        current_app.logger.error(e)
 
 
 # FIXME: Change all setting views' path to be under settings/

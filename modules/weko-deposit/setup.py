@@ -55,6 +55,7 @@ setup_requires = [
 ]
 
 install_requires = [
+    'dictdiffer>=0.5.0',
     'Flask-BabelEx>=0.9.2',
 ]
 

@@ -37,7 +37,7 @@ from invenio_pidstore import current_pidstore
 from invenio_pidstore.errors import PIDInvalidAction
 from invenio_records.api import Record
 from invenio_records_rest.errors import InvalidDataRESTError, \
-    MaxResultWindowRESTError, UnsupportedMediaRESTError
+    SearchPaginationRESTError, UnsupportedMediaRESTError
 from invenio_records_rest.links import default_links_factory
 from invenio_records_rest.utils import obj_or_import_string
 from invenio_records_rest.views import \
@@ -201,7 +201,12 @@ class IndexSearchResource(ContentNegotiatedMethodView):
                     params[param] = value
 
         if page * size >= self.max_result_window:
-            raise MaxResultWindowRESTError()
+            raise SearchPaginationRESTError(
+                description=(
+                    'Maximum number of {} results have been reached.'
+                        .format(self.max_result_window))
+            )
+
         urlkwargs = dict()
         search_obj = self.search_class()
         search = search_obj.with_preference_param().params(version=True)

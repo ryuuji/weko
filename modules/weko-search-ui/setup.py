@@ -56,7 +56,6 @@ setup_requires = [
 
 install_requires = [
     'Flask-BabelEx>=0.9.2',
-    'Flask-Assets>=0.12',
     'ipaddress>=1.0.19',
     'angular-gettext-babel>=0.3',
     'elasticsearch_dsl<6.2.0,>=6.0.0',

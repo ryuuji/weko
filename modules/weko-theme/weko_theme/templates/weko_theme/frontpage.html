@@ -24,19 +24,19 @@
 
 {%- block css %}
   {{ super() }}
-  {% assets "invenio_search_ui_search_css" %}<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
-  {% assets "weko_search_ui_css" %}<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
+  {#% assets "invenio_search_ui_search_css" %#}<link href="{#{ ASSET_URL }#}" rel="stylesheet">{#% endassets %#}
+  {#% assets "weko_search_ui_css" %#}<link href="{#{ ASSET_URL }#}" rel="stylesheet">{#% endassets %#}
 {%- endblock css %}
 
 {%- block javascript %}
   {{ super() }}
-  {% assets "weko_theme_js_treeview" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "weko_theme_js_top_page" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "weko_theme_js_detail_search" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "invenio_search_ui_search_js" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "weko_search_ui_dependencies_js" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "weko_search_ui_js" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
-  {% assets "weko_theme_js_widget" %}<script src="{{ ASSET_URL }}"></script>{% endassets %}
+  {#% assets "weko_theme_js_treeview" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "weko_theme_js_top_page" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "weko_theme_js_detail_search" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "invenio_search_ui_search_js" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "weko_search_ui_dependencies_js" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "weko_search_ui_js" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
+  {#% assets "weko_theme_js_widget" %#}<script src="{#{ ASSET_URL }#}"></script>{#% endassets %#}
 {%- endblock javascript %}
 
 {%- block page_body_tabs %}

@@ -28,7 +28,7 @@ from flask_babelex import gettext as _
 from invenio_cache import current_cache
 from invenio_db import db
 from invenio_files_rest.models import Bucket, ObjectVersion
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidrelations.models import PIDRelation
 from invenio_pidstore.models import PersistentIdentifier, \
     PIDDoesNotExistError, PIDStatus
@@ -37,7 +37,7 @@ from invenio_records_files.models import RecordsBuckets
 from sqlalchemy.exc import SQLAlchemyError
 from weko_admin.models import Identifier
 from weko_deposit.api import WekoDeposit, WekoRecord
-from weko_handle.api import Handle
+#from weko_handle.api import Handle
 from weko_index_tree.models import Index
 from weko_records.api import FeedbackMailList, ItemsMetadata, ItemTypes, \
     Mapping
@@ -147,15 +147,15 @@ def register_hdl(activity_id):
     record_url = request.url.split('/workflow/')[0] \
         + '/records/' + str(deposit_id)
 
-    weko_handle = Handle()
-    handle = weko_handle.register_handle(location=record_url)
+    #weko_handle = Handle()
+    #handle = weko_handle.register_handle(location=record_url)
 
-    if handle:
-        handle = WEKO_SERVER_CNRI_HOST_LINK + str(handle)
-        identifier = IdentifierHandle(item_uuid)
-        identifier.register_pidstore('hdl', handle)
-    else:
-        current_app.logger.info('Cannot connect Handle server!')
+    #if handle:
+    #    handle = WEKO_SERVER_CNRI_HOST_LINK + str(handle)
+    #    identifier = IdentifierHandle(item_uuid)
+    #    identifier.register_pidstore('hdl', handle)
+    #else:
+    current_app.logger.info('Cannot connect Handle server!')
 
 
 def register_hdl_by_item_id(deposit_id, item_uuid, url_root):
@@ -170,15 +170,15 @@ def register_hdl_by_item_id(deposit_id, item_uuid, url_root):
     record_url = url_root \
         + 'records/' + str(deposit_id)
 
-    weko_handle = Handle()
-    handle = weko_handle.register_handle(location=record_url)
+    #weko_handle = Handle()
+    #handle = weko_handle.register_handle(location=record_url)
 
-    if handle:
-        handle = WEKO_SERVER_CNRI_HOST_LINK + str(handle)
-        identifier = IdentifierHandle(item_uuid)
-        identifier.register_pidstore('hdl', handle)
-    else:
-        current_app.logger.info('Cannot connect Handle server!')
+    #if handle:
+    #    handle = WEKO_SERVER_CNRI_HOST_LINK + str(handle)
+    #    identifier = IdentifierHandle(item_uuid)
+    #    identifier.register_pidstore('hdl', handle)
+    #else:
+    current_app.logger.info('Cannot connect Handle server!')
 
     return handle
 
@@ -1337,8 +1337,8 @@ def handle_finish_workflow(deposit, current_pid, recid):
                     merge_data_to_record_without_version(current_pid)
                 _deposit.publish()
 
-                pv = PIDVersioning(child=pid_without_ver)
-                last_ver = PIDVersioning(parent=pv.parent).get_children(
+                pv = PIDNodeVersioning(child=pid_without_ver)
+                last_ver = PIDNodeVersioning(parent=pv.parent).get_children(
                     pid_status=PIDStatus.REGISTERED
                 ).filter(PIDRelation.relation_type == 2).order_by(
                     PIDRelation.index.desc()).first()

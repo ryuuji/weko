@@ -42,7 +42,7 @@ from flask_babelex import gettext as _
 from invenio_db import db
 from invenio_files_rest.models import ObjectVersion
 from invenio_i18n.ext import current_i18n
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidstore.errors import PIDDoesNotExistError
 from invenio_pidstore.models import PersistentIdentifier
 from invenio_records.api import Record
@@ -53,7 +53,7 @@ from weko_admin.models import SessionLifetime
 from weko_authors.utils import check_email_existed
 from weko_deposit.api import WekoDeposit, WekoIndexer, WekoRecord
 from weko_deposit.pidstore import get_latest_version_id
-from weko_handle.api import Handle
+#from weko_handle.api import Handle
 from weko_index_tree.api import Indexes
 from weko_index_tree.utils import check_restrict_doi_with_indexes
 from weko_indextree_journal.api import Journals
@@ -1062,7 +1062,7 @@ def register_item_metadata(item):
             _deposit = deposit.newversion(pid)
             _deposit.publish_without_commit()
         else:
-            _pid = PIDVersioning(child=pid).last_child
+            _pid = PIDNodeVersioning(child=pid).last_child
             _record = WekoDeposit.get_record(_pid.object_uuid)
             _deposit = WekoDeposit(_record, _record.model)
             _deposit.merge_data_to_record_without_version(pid)
@@ -1467,9 +1467,10 @@ def handle_check_cnri(list_record):
                     if not suffix:
                         item['cnri_suffix_not_existed'] = True
 
-                    if prefix != Handle().get_prefix():
-                        error = _('Specified Prefix of {} is incorrect.') \
-                            .format('CNRI')
+                    error = _('Not support handle.')
+                    #if prefix != Handle().get_prefix():
+                    #    error = _('Specified Prefix of {} is incorrect.') \
+                    #        .format('CNRI')
                     if not re.search(WEKO_IMPORT_SUFFIX_PATTERN, suffix):
                         error = _(err_msg_suffix).format('CNRI')
         else:

@@ -43,7 +43,7 @@ from invenio_accounts.models import Role, userrole
 from invenio_db import db
 from invenio_i18n.ext import current_i18n
 from invenio_indexer.api import RecordIndexer
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidrelations.models import PIDRelation
 from invenio_pidstore.models import PersistentIdentifier, PIDStatus
 from invenio_records.api import RecordBase
@@ -2446,7 +2446,7 @@ def check_item_is_being_edit(
     if not activity:
         activity = WorkActivity()
     if not post_workflow:
-        latest_pid = PIDVersioning(child=recid).last_child
+        latest_pid = PIDNodeVersioning(child=recid).last_child
         item_uuid = latest_pid.object_uuid
         post_workflow = activity.get_workflow_activity_by_item_id(item_uuid)
     if post_workflow and post_workflow.action_status \
@@ -2465,8 +2465,8 @@ def check_item_is_being_edit(
                                              ASP.ACTION_DOING]:
             return True
 
-        pv = PIDVersioning(child=recid)
-        latest_pid = PIDVersioning(parent=pv.parent).get_children(
+        pv = PIDNodeVersioning(child=recid)
+        latest_pid = PIDNodeVersioning(parent=pv.parent).get_children(
             pid_status=PIDStatus.REGISTERED
         ).filter(PIDRelation.relation_type == 2).order_by(
             PIDRelation.index.desc()).first()

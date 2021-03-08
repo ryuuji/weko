@@ -33,7 +33,7 @@ from flask_babelex import gettext as _
 from flask_login import current_user, login_required
 from invenio_accounts.models import Role, userrole
 from invenio_db import db
-from invenio_pidrelations.contrib.versioning import PIDVersioning
+from invenio_pidrelations.contrib.versioning import PIDNodeVersioning
 from invenio_pidrelations.models import PIDRelation
 from invenio_pidstore.errors import PIDDoesNotExistError
 from invenio_pidstore.models import PersistentIdentifier, PIDStatus
@@ -695,8 +695,8 @@ def next_action(activity_id='0', action_id=0):
             item_ids = [item_id]
             if not recid and pid_without_ver:
                 if ".0" in current_pid.pid_value:
-                    pv = PIDVersioning(child=pid_without_ver)
-                    last_ver = PIDVersioning(parent=pv.parent).get_children(
+                    pv = PIDNodeVersioning(child=pid_without_ver)
+                    last_ver = PIDNodeVersioning(parent=pv.parent).get_children(
                         pid_status=PIDStatus.REGISTERED
                     ).filter(PIDRelation.relation_type == 2).order_by(
                         PIDRelation.index.desc()).first()
@@ -1016,7 +1016,7 @@ def cancel_action(activity_id='0', action_id=0):
                             pid_type='recid',
                             object_type='rec',
                             object_uuid=cancel_item_id)
-                        cancel_pv = PIDVersioning(child=cancel_pid)
+                        cancel_pv = PIDNodeVersioning(child=cancel_pid)
                         if cancel_pv.exists:
                             cancel_pv.remove_child(cancel_pid)
                 db.session.commit()

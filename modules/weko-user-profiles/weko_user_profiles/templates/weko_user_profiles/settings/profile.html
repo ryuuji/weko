@@ -20,8 +20,8 @@
 {%- extends config.USERPROFILES_SETTINGS_TEMPLATE %}
 {% block css %}
 {{ super() }}
-{% assets "weko_theme_css_buttons" %}
-<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
+{#% assets "weko_theme_css_buttons" %#}
+<link href="{#{ ASSET_URL }#}" rel="stylesheet">{#% endassets %#}
 {% endblock %}
 
 {% from "weko_user_profiles/settings/_macros.html" import render_field, form_errors %}

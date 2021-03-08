@@ -25,7 +25,7 @@ import requests
 from flask import current_app, render_template
 from flask_babelex import lazy_gettext as _
 from invenio_db import db
-from invenio_mail.api import send_mail
+#from invenio_mail.api import send_mail
 from invenio_stats.utils import QueryCommonReportsHelper
 from sqlalchemy import text
 
@@ -86,6 +86,7 @@ def send_site_license_mail(organization_name, mail_list, agg_date, data):
             # setting locale
             setattr(ctx, 'babel_locale', default_lang)
             # send alert mail
+            """
             send_mail(
                 subject,
                 mail_list,
@@ -95,5 +96,6 @@ def send_site_license_mail(organization_name, mail_list, agg_date, data):
                         agg_date=agg_date,
                         data=data,
                         lang_code=default_lang)))
+            """
     except Exception as ex:
         current_app.logger.error(ex)

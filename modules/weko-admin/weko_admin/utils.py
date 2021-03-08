@@ -34,7 +34,7 @@ from invenio_accounts.models import Role, userrole
 from invenio_db import db
 from invenio_i18n.ext import current_i18n
 from invenio_indexer.api import RecordIndexer
-from invenio_mail.admin import MailSettingView
+#from invenio_mail.admin import MailSettingView
 from invenio_records.models import RecordMetadata
 from invenio_stats.views import QueryFileStatsCount, QueryRecordViewCount
 from jinja2 import Template

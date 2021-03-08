@@ -71,10 +71,11 @@ class DateTime(_DateTime):
             return datetime.datetime.strptime(datestring[:19],
                                               '%Y-%m-%dT%H:%M:%S')
 
-    DATEFORMAT_DESERIALIZATION_FUNCS = dict(
-        _DateTime.DATEFORMAT_DESERIALIZATION_FUNCS,
-        permissive=from_iso_permissive
-    )
+    # とりあえず FIXME:
+    #DATEFORMAT_DESERIALIZATION_FUNCS = dict(
+    #    _DateTime.DATEFORMAT_DESERIALIZATION_FUNCS,
+    #    permissive=from_iso_permissive
+    #)
 
 
 class OAISchema(Schema):
