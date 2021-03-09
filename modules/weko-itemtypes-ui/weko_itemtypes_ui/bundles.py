@@ -21,7 +21,7 @@
 """Bundles for weko-itemtypes-ui."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 style = Bundle(
     'css/weko_itemtypes_ui/itemtype.less',

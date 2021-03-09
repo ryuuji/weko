@@ -1,6 +1,6 @@
 require([
-  "jquery",
-  "bootstrap"
+  "node_modules/jquery/jquery",
+  "node_modules/bootstrap/dist/js/bootstrap"
 ], function () {
   $(document).ready(function() {
     var journalNames = {};
@@ -99,7 +99,7 @@ require([
         var getJournalUrl = '';
 
         if (issn) {
-          getJournalUrl = '/workflow/journal/issn/' + issn;    
+          getJournalUrl = '/workflow/journal/issn/' + issn;
         } else {
           issn = ''
           var titleList = title.split('/')

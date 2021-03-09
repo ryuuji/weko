@@ -21,7 +21,7 @@
 """Group bundles."""
 
 from flask_assets import Bundle
-from invenio_assets import RequireJSFilter
+from invenio_assets_legacy import RequireJSFilter
 
 js = Bundle(
     'js/groups/init.js',

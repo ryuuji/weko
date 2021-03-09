@@ -21,7 +21,7 @@
 """Bundles for weko-index-tree."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 embedded_wayf_custom = Bundle(
     'css/weko_accounts/wayf_custom.css',

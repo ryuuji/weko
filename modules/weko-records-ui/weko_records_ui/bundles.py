@@ -21,7 +21,7 @@
 """WEKO3 module docstring."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 style = NpmBundle(
     'node_modules/angular-loading-bar/build/loading-bar.css',

@@ -27,7 +27,7 @@
 from __future__ import unicode_literals
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle, RequireJSFilter
+from invenio_assets_legacy import NpmBundle, RequireJSFilter
 
 previewer_base_css = Bundle(
     "node_modules/bootstrap/dist/css/bootstrap.css",

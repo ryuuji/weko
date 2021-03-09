@@ -30,6 +30,10 @@ WEKO3のテスト用リポジトリ。このリポジトリは実験用。
 - [ ] 依存関係の再確認
 
 
+- npm install clean-css-cli -g
+- npm install node-sass -g
+- npm install requirejs  -g
+- npm install uglifyjs -g
 .. image:: https://travis-ci.org/RCOSDP/weko.svg?branch=master
         :target: https://travis-ci.org/RCOSDP/weko
 

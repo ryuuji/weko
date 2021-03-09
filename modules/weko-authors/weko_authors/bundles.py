@@ -21,7 +21,7 @@
 """Bundles for weko-authors."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 css = Bundle(
     'css/weko_authors/styles.bundle.css',

@@ -1,6 +1,6 @@
 require([
-  "jquery",
-  "bootstrap"
+  "node_modules/jquery/jquery",
+  "node_modules/bootstrap/dist/js/bootstrap"
 ], function() {
 
   /**

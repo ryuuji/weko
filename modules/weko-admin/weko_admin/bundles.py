@@ -21,7 +21,7 @@
 """Bundles for weko-admin-ui."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 js = Bundle(
     'js/weko_admin/block_style.js',

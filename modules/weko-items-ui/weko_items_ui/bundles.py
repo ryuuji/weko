@@ -21,7 +21,7 @@
 """Bundles for weko-items-ui."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle, RequireJSFilter
+from invenio_assets_legacy import NpmBundle, RequireJSFilter
 
 indextree_style = Bundle(
     'css/weko_items_ui/indextree.bundle.css',

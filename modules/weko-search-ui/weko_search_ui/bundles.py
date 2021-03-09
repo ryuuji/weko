@@ -23,7 +23,7 @@
 import os
 
 from flask_assets import Bundle
-from invenio_assets import AngularGettextFilter, GlobBundle, NpmBundle
+from invenio_assets_legacy import AngularGettextFilter, GlobBundle, NpmBundle
 from pkg_resources import resource_filename
 
 css = Bundle(

@@ -21,7 +21,7 @@
 """Bundles for weko_indextree_journal."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 style = Bundle(
     'css/weko_indextree_journal/styles.bundle.css',

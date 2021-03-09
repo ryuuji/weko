@@ -35,12 +35,12 @@ bundle as an example):
 """
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 css_bootstrap = NpmBundle(
     'css/weko_theme/styles.scss',
     depends=(
-        '../data/_variables.scss',
+        'css/weko_theme/_variables.scss',
         'scss/invenio_theme/*.scss',
         'scss/invenio_communities/variables.scss',
         'scss/invenio_communities/communities/*.scss',
@@ -116,3 +116,72 @@ widget_js = Bundle(
     filters='jsmin',
     output="gen/widget.%(version)s.js",
 )
+
+
+
+legacy_css = NpmBundle(
+    'scss/invenio_theme/styles.scss',
+    depends=('scss/invenio_theme/*.scss', ),
+    filters='node-scss,cleancssurl',
+    output='gen/styles.%(version)s.css',
+    npm={
+        'almond': '~0.3.1',
+        'bootstrap-sass': '~3.3.5',
+        'font-awesome': '~4.4.0',
+        'jquery': '~1.9.1',
+    }
+)
+
+admin_lte_css = NpmBundle(
+    'node_modules/admin-lte/dist/css/AdminLTE.min.css',
+    'node_modules/select2/dist/css/select2.min.css',
+    filters='cleancssurl',
+    output='gen/styles.admin-lte.%(version)s.css',
+    npm={
+        'admin-lte': '~2.3.6',
+        'select2': '~4.0.2',
+    }
+)
+"""Admin LTE CSS."""
+
+admin_css = NpmBundle(
+    'scss/invenio_theme/admin.scss',
+    filters='node-scss,cleancssurl',
+    output='gen/styles.admin.%(version)s.css'
+)
+"""Default style for admin interface."""
+
+js = Bundle(
+    NpmBundle(
+        'node_modules/almond/almond.js',
+        'js/settings.js',
+        npm={
+            'almond': '~0.3.1',
+            'angular': '~1.4.9',
+            'jquery': '~1.9.1',
+        }
+    ),
+    Bundle(
+        'js/base.js',
+        filters='requirejs',
+    ),
+    filters='jsmin',
+    output='gen/packed.%(version)s.js',
+)
+"""Default JavaScript bundle with Almond, JQuery and RequireJS."""
+
+admin_js = NpmBundle(
+    'node_modules/jquery/jquery.js',
+    'node_modules/moment/moment.js',
+    'node_modules/select2/dist/js/select2.full.js',
+    'node_modules/bootstrap-sass/assets/javascripts/bootstrap.js',
+    'node_modules/admin-lte/dist/js/app.js',
+    output='gen/admin.%(version)s.js',
+    filters='jsmin',
+    npm={
+        'jquery': '~1.9.1',
+        'moment': '~2.9.0',
+        'select2': '~4.0.2',
+    }
+)
+"""AdminJS contains JQuery, Moment, Select2, Bootstrap, and Admin-LTE."""

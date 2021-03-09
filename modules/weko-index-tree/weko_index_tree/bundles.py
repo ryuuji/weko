@@ -21,7 +21,7 @@
 """Bundles for weko-index-tree."""
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle
+from invenio_assets_legacy import NpmBundle
 
 style = Bundle(
     'css/weko_index_tree/styles.bundle.css',

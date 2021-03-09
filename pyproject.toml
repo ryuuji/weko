@@ -11,6 +11,7 @@ invenio-accounts = "*"
 invenio-admin = "*"
 invenio-app = "*"
 invenio-assets = "*"
+invenio-assets-legacy = {path = "./modules/invenio-assets-legacy", develop = true}
 invenio-base = "*"
 invenio-cache = "*"
 invenio-celery = "*"

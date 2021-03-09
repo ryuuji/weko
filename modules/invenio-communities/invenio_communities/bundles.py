@@ -26,7 +26,7 @@
 from __future__ import absolute_import, print_function
 
 from flask_assets import Bundle
-from invenio_assets import NpmBundle, RequireJSFilter
+from invenio_assets_legacy import NpmBundle, RequireJSFilter
 
 js = Bundle(
     "js/invenio_communities/main.js",
